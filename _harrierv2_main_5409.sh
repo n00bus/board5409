@@ -104,6 +104,7 @@ startfus command execution finished"
 		    elif [[ "$?" == "0" ]] && [[ "$CUBEOUTPUT" == *"$SUCCESSCODE"* ]]
 		    then
 			echo "2. FUS upgrade success."
+   		    	spd-say "фус"
 		    else
 		    	echo "Something went wrong during FUS upgrade, check output..."
 			echo -e "$CUBEOUTPUT"
@@ -115,7 +116,6 @@ startfus command execution finished"
 			done
 			continue
 		    fi
-		    spd-say "фус"
 		    CUBEOUTPUT=$(./STM32_Programmer_CLI -c port=SWD -fwupgrade harrierv2_main/3_stm32wb5x_BLE_Stack_full_fw.bin 0x080ca000 firstinstall=0)
 		    if [[ "$?" == "0" ]] && [[ "$CUBEOUTPUT" == *"$SUCCESSCODE"* ]]
 		    then
@@ -150,7 +150,7 @@ startwirelessStack command execution finished"
 						if [[ "$?" == "0" ]] && [[ "$CUBEOUTPUT" == *"$SUCCESSCODE"* ]]
 						then
 							echo "5. Main program verified successfully."
-							spd-say "main"
+#							spd-say "main"
 							echo -e "${GREEN}Full Procedure completed.${NC}"
 						else
 							echo "Something went wrong during Main program download, check output..."
